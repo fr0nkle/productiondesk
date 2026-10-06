@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Production Desk · Squid Productions</title>
+  <link rel="canonical" href="https://productiondesk.squidproductions.org/">
+  <style>
+    body { max-width:640px; margin:12vh auto; padding:24px; font:18px/1.6 system-ui; color:#241d21; }
+    h1 { color:#e60026; }
+    a { color:#b50020; }
+  </style>
+</head>
+<body>
+  <h1>Production Desk</h1>
+  <p>Local film scheduling software tool made by some friends at Squid Productions to help make scheduling and script breakdowns easier.</p>
+  <p><a id="download" href="https://updates.squidproductions.org/">Download Production Desk for Mac</a></p>
+  <p>For Apple Silicon Macs running macOS 12 or later. Unzip the download and move Production Desk.app into your Applications folder. Existing projects are preserved when replacing the app.</p>
+  <p>Already installed? Choose Production Desk → Check for Updates… in the app.</p>
+  <p>This personal build is not Apple-notarized. macOS may require first-launch approval.</p>
+  <p><a href="mailto:alexanderhosier@squidproductions.org">Report a bug</a></p>
+  <script>
+    // Read the published feed so this address always offers the newest release.
+    fetch('https://updates.squidproductions.org/appcast.xml')
+      .then(response => {
+        if (!response.ok) throw new Error('Update feed unavailable');
+        return response.text();
+      })
+      .then(source => {
+        const feed = new DOMParser().parseFromString(source, 'application/xml');
+        const namespace = 'http://www.andymatuschak.org/xml-namespaces/sparkle';
+        const items = Array.from(feed.querySelectorAll('channel > item'));
+        items.sort((a, b) => Number(b.getElementsByTagNameNS(namespace, 'version')[0]?.textContent) - Number(a.getElementsByTagNameNS(namespace, 'version')[0]?.textContent));
+        const item = items[0];
+        const address = new URL(item?.querySelector('enclosure')?.getAttribute('url'));
+        if (address.origin !== 'https://updates.squidproductions.org' || !address.pathname.endsWith('.zip')) throw new Error('Invalid download address');
+        const version = item.getElementsByTagNameNS(namespace, 'shortVersionString')[0]?.textContent;
+        const download = document.getElementById('download');
+        download.href = address.href;
+        download.textContent = version ? `Download Production Desk ${version} for Mac` : 'Download Production Desk for Mac';
+      })
+      .catch(() => {}); // The original download page remains a working fallback.
+  </script>
+</body>
+</html>
