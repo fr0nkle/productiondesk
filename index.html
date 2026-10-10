@@ -3,30 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Local film scheduling, script breakdowns, stripboards and shot lists for Mac and Windows. Made by Squid Productions.">
   <title>Production Desk · Squid Productions</title>
   <link rel="canonical" href="https://productiondesk.squidproductions.org/">
+  <link rel="icon" href="assets/sp-blue.png">
   <style>
-    :root { color-scheme:dark; background:#191419; }
-    body { max-width:640px; margin:12vh auto; padding:24px; font:18px/1.6 system-ui; color:#f3eaf0; }
-    h1 { color:#e60026; }
-    a { color:#ff94ad; }
-    .downloads { display:flex; gap:14px; flex-wrap:wrap; margin:28px 0; }
-    .download { display:inline-block; padding:13px 20px; background:#e60026; color:#fff; border-radius:6px; text-decoration:none; font-weight:650; }
-    .download:hover { background:#b50020; }
-    .download:focus-visible { outline:3px solid #ff94ad; outline-offset:4px; }
-    .requirements { font-size:15px; }
+    :root{color-scheme:dark;background:#191419}body{max-width:640px;margin:10vh auto;padding:24px;font:18px/1.6 system-ui;color:#f3eaf0}h1{color:#e60026;font-size:2em;margin-bottom:16px}h2{font-size:21px;margin-top:32px}a{color:#ff94ad}.downloads{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0}.download{display:inline-block;padding:13px 20px;background:#e60026;color:#fff;border-radius:6px;text-decoration:none;font-weight:650}.download:hover{background:#b50020}a:focus-visible{outline:3px solid #ff94ad;outline-offset:4px}.requirements,footer{font-size:15px}.features{padding-left:22px}footer{border-top:1px solid #49333f;margin-top:36px;padding-top:24px}.banner{width:190px;height:auto;display:block;margin-bottom:12px}footer p{margin:10px 0}.links{display:flex;gap:20px;flex-wrap:wrap}@media(max-width:480px){body{margin:5vh auto;padding:22px}.downloads{flex-direction:column}.download{text-align:center}}
   </style>
 </head>
 <body>
-  <h1>Production Desk</h1>
-  <p>Local film scheduling software tool made by some friends at Squid Productions to help make scheduling and script breakdowns easier.</p>
-  <div class="downloads" aria-label="Download Production Desk">
-    <a class="download" id="download" href="https://updates.squidproductions.org/Production-Desk-1.4.3-13.zip">Download for Mac</a>
-    <a class="download" id="download-windows" href="https://github.com/OfficialSquidProductions/production-desk-updates/releases/latest/download/Production-Desk-Windows-Setup.exe">Download for Windows</a>
-  </div>
-  <p class="requirements">Mac: Apple Silicon, macOS 12 or later. Windows: Windows 10/11, 64-bit (x64). The Windows download is one complete, offline .exe installer.</p>
-  <p class="requirements">These personal builds are not Apple-notarized or Windows code-signed. macOS may require first-launch approval; Windows may show a SmartScreen prompt.</p>
-  <p><a href="mailto:alexanderhosier@squidproductions.org">Report a bug</a></p>
+  <main>
+    <h1>Production Desk</h1>
+    <p>Local film scheduling software tool made by some friends at Squid Productions to help make scheduling and script breakdowns easier.</p>
+    <p>Break down your script, arrange your shooting days, and keep your shot list together. Keep It Simple Stupid.</p>
+    <div class="downloads" aria-label="Download Production Desk">
+      <a class="download" id="download" href="https://updates.squidproductions.org/Production-Desk-1.4.3-13.zip">Download for Mac</a>
+      <a class="download" id="download-windows" href="https://github.com/OfficialSquidProductions/production-desk-updates/releases/latest/download/Production-Desk-Windows-Setup.exe">Download for Windows</a>
+    </div>
+    <p class="requirements">Mac: Apple Silicon, macOS 12 or later. Windows: Windows 10/11, 64-bit (x64). One complete offline .exe installer; no separate runtime downloads.</p>
+    <p class="requirements">These personal builds are not Apple-notarized or Windows code-signed. macOS may require first-launch approval; Windows may show a SmartScreen prompt.</p>
+    <h2>The plan before the shoot.</h2>
+    <ul class="features">
+      <li>Import PDF, Final Draft, Fountain, or text scripts and break them into scenes.</li>
+      <li>Tag cast, props, costumes, and other production elements alongside your script.</li>
+      <li>Arrange a stripboard into shooting days and compare schedule scenarios.</li>
+      <li>Build scene-linked shot lists with camera details, priorities, and time estimates.</li>
+      <li>Print schedules and breakdowns, export shot lists, and save portable production backups.</li>
+    </ul>
+    <p class="requirements">Projects stay on your device. No account or subscription.</p>
+    <p>Planning the space, too? <a href="https://scenic.squidproductions.org/">Explore Scenic</a> for sets, blocking, cameras, and lighting.</p>
+    <div class="links">
+      <a href="https://github.com/OfficialSquidProductions/production-desk-updates/releases/latest">Windows release notes &amp; checksums</a>
+      <a href="mailto:alexanderhosier@squidproductions.org">Report a bug</a>
+    </div>
+  </main>
+  <footer>
+    <img class="banner" src="assets/squid-banner.png" width="190" height="107" alt="Squid Productions">
+    <p>A Squid Production™ Software</p>
+    <p><a href="https://scenic.squidproductions.org/">Also from us: Scenic</a></p>
+    <p><a href="privacy.html">Privacy</a></p>
+  </footer>
   <script>
     // Read the published feed so this address always offers the newest release.
     fetch('https://updates.squidproductions.org/appcast.xml')
