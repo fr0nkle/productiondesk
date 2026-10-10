@@ -10,13 +10,22 @@
     body { max-width:640px; margin:12vh auto; padding:24px; font:18px/1.6 system-ui; color:#f3eaf0; }
     h1 { color:#e60026; }
     a { color:#ff94ad; }
+    .downloads { display:flex; gap:14px; flex-wrap:wrap; margin:28px 0; }
+    .download { display:inline-block; padding:13px 20px; background:#e60026; color:#fff; border-radius:6px; text-decoration:none; font-weight:650; }
+    .download:hover { background:#b50020; }
+    .download:focus-visible { outline:3px solid #ff94ad; outline-offset:4px; }
+    .requirements { font-size:15px; }
   </style>
 </head>
 <body>
   <h1>Production Desk</h1>
   <p>Local film scheduling software tool made by some friends at Squid Productions to help make scheduling and script breakdowns easier.</p>
-  <p><a id="download" href="https://updates.squidproductions.org/">Download Production Desk for Mac</a></p>
-  <p>This personal build is not Apple-notarized. macOS may require first-launch approval.</p>
+  <div class="downloads" aria-label="Download Production Desk">
+    <a class="download" id="download" href="https://updates.squidproductions.org/Production-Desk-1.4.3-13.zip">Download for Mac</a>
+    <a class="download" id="download-windows" href="https://github.com/OfficialSquidProductions/production-desk-updates/releases/latest/download/Production-Desk-Windows-Setup.exe">Download for Windows</a>
+  </div>
+  <p class="requirements">Mac: Apple Silicon, macOS 12 or later. Windows: Windows 10/11, 64-bit (x64). The Windows download is one complete, offline .exe installer.</p>
+  <p class="requirements">These personal builds are not Apple-notarized or Windows code-signed. macOS may require first-launch approval; Windows may show a SmartScreen prompt.</p>
   <p><a href="mailto:alexanderhosier@squidproductions.org">Report a bug</a></p>
   <script>
     // Read the published feed so this address always offers the newest release.
@@ -36,7 +45,8 @@
         const version = item.getElementsByTagNameNS(namespace, 'shortVersionString')[0]?.textContent;
         const download = document.getElementById('download');
         download.href = address.href;
-        download.textContent = version ? `Download Production Desk ${version} for Mac` : 'Download Production Desk for Mac';
+        download.textContent = 'Download for Mac';
+        if (version) download.title = `Production Desk ${version} for Mac`;
       })
       .catch(() => {}); // The original download page remains a working fallback.
   </script>
